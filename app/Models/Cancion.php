@@ -9,4 +9,12 @@ class Cancion extends Model
 {
     /** @use HasFactory<\Database\Factories\CancionFactory> */
     use HasFactory;
+
+    protected $table = 'canciones';
+
+    protected $filalble = ['cancion','duracion'];
+
+    public function albumes(){
+        return $this->belongsToMany(Album::class, 'album_canciones');
+    }
 }
