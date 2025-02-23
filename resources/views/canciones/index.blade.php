@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Albumes
+            Canciones
         </h2>
     </x-slot>
     <div class="py-6">
@@ -31,31 +31,34 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($canciones as $cancion)
-                                        <tr
-                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $cancion->cancion }}
+                                </th>
                                             <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $cancion->cancion }}
-                                            </th>
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $cancion->duracion }}
-                                            </th>
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                @foreach ($cancion->albumes as $album)
-                                                    {{ $album->artistas->first()->nombre }}
-                                                @endforeach
-                                            </th>
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                @foreach ($cancion->albumes as $album)
-                                                    {{ $album->album }}
-                                                @endforeach
-                                        </tr>
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $cancion->duracion }}
+                                        </th>
+                                        <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        @foreach ($cancion->albumes as $album)
+                                        {{ $album->artistas->first()->nombre }}
+                                        @endforeach
+                                    </th>
+                                    <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    @foreach ($cancion->albumes as $album)
+                                    {{ $album->album }}
                                     @endforeach
-                                </tbody>
-                            </table>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div>
+                            {{ $canciones->links() }}
+                        </div>
                         </div>
                     </div>
                 </div>

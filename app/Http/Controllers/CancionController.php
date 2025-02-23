@@ -12,7 +12,9 @@ class CancionController extends Controller
      */
     public function index()
     {
-        $canciones = Cancion::with('albumes.artistas')->get();
+        // $canciones = Cancion::with('albumes.artistas')->get();
+
+        $canciones = Cancion::with('albumes.artistas')->paginate(2);
         return view('canciones.index', [ 'canciones' => $canciones ]);
     }
 
