@@ -78,6 +78,7 @@ class ArtistaController extends Controller
      */
     public function destroy(Artista $artista)
     {
-        //
+        $artista->delete();
+        return redirect()->route('artistas.index');
     }
 }
