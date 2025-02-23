@@ -12,8 +12,18 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('artistas.index')" :active="request()->routeIs('artista.index')">
+                        {{ __('Artistas') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('albumes.index')" :active="request()->routeIs('albumes.index')">
+                        {{ __('Albumes') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('canciones.index')" :active="request()->routeIs('canciones.index')">
+                        {{ __('Canciones') }}
                     </x-nav-link>
                 </div>
             </div>

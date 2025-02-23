@@ -12,7 +12,12 @@ class ArtistaController extends Controller
      */
     public function index()
     {
-        //
+        return view(
+            'artistas.index',
+            [
+                'artistas' => Artista::all(),
+            ]
+        );
     }
 
     /**
@@ -20,7 +25,7 @@ class ArtistaController extends Controller
      */
     public function create()
     {
-        //
+        return view('artistas.create');
     }
 
     /**
@@ -28,7 +33,12 @@ class ArtistaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255'
+        ]);
+        Artista::create($validated);
+        session()->flash('exito', 'Artista creado correctamente.');
+        return redirect()->route('artistas.index');
     }
 
     /**
@@ -44,7 +54,9 @@ class ArtistaController extends Controller
      */
     public function edit(Artista $artista)
     {
-        //
+        return view('artistas.edit', [
+            'artista' => $artista,
+        ]);
     }
 
     /**
@@ -52,7 +64,13 @@ class ArtistaController extends Controller
      */
     public function update(Request $request, Artista $artista)
     {
-        //
+        $validate = $request->validate(
+            ['nombre' => 'required | string | max:255'],
+        );
+
+        $artista->fill($validate);
+        $artista->save();
+        return redirect()->route('artistas.index');
     }
 
     /**
