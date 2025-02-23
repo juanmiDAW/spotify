@@ -9,4 +9,16 @@ class Album extends Model
 {
     /** @use HasFactory<\Database\Factories\AlbumFactory> */
     use HasFactory;
+    protected $table = 'albumes';
+
+    protected $fillable = ['nombre', 'durecion'];
+    
+    public function canciones(){
+        return $this->belongsToMany(Cancion::class, 'album_cancion');
+    }
+
+    public function artistas(){
+        return $this->belongsToMany(Artista::class, 'album_artista', 'album_id', 'artista_id');
+    }
+
 }

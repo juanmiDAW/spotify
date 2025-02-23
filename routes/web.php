@@ -28,7 +28,7 @@ Route::resource('artistas', ArtistaController::class);
 Route::resource('albumes', AlbumController::class);
 Route::resource('canciones', CancionController::class);
 
-Route::get('artistas/buscar/{artistas}', function(Request $request){
+Route::get('artistas/buscar', function(Request $request){
     // dd($request->all()); // Esto debería mostrar todos los parámetros de la solicitud
     $buscar = $request->input('dato');
     $artistas = Artista::where('nombre', 'LIKE', "%{$buscar}%")->get();

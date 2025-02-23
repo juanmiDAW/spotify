@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('album');
             $table->foreignId('artista_id')->constrained();
+            $table->time('durecion');
             $table->timestamps();
         });
     }

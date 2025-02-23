@@ -12,7 +12,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $albumes = Album::with('artistas')->get();
+        return view('albumes.index', ['albumes' => $albumes]);
     }
 
     /**

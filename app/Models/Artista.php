@@ -12,10 +12,10 @@ class Artista extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'duracion'];
 
     public function albumes()
     {
-        return $this->belongsToMany(Album::class, 'album_artista');
+        return $this->belongsToMany(Album::class, 'album_artista', 'artista_id','album_id');
     }
 }
