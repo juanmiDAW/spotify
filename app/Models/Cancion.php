@@ -15,6 +15,6 @@ class Cancion extends Model
     protected $filalble = ['cancion','duracion'];
 
     public function albumes(){
-        return $this->belongsToMany(Album::class, 'album_cancion');
+        return $this->belongsToMany(Album::class, 'album_cancion','cancion_id', 'album_id');
     }
 }
